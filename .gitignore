@@ -1,0 +1,10 @@
+# Vendor folder (composer dependencies)
+/vendor/
+
+# IDE files
+/.idea/
+/.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
