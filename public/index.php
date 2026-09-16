@@ -1,16 +1,23 @@
 <?php
-?>
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <title>Оренда обладнання</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<h1>Сайт замовлення обладнання для подій</h1>
-<p><a href="../views/form.php">Зробити нове замовлення</a></p>
-<p><a href="../views/history.php">Переглянути історію замовлень</a></p>
 
-</body>
-</html>
+require_once __DIR__ . '/../src/submisiion.php';
+
+$page = isset($_GET['page']) ? $_GET['page'] : 'form';
+
+if ($page == 'history') {
+
+    $view = handleHistory();
+    $orders = $view['orders'];
+    $filterType = $view['filterType'];
+
+    require __DIR__ . '/../views/history.php';
+
+} else {
+
+    $view = handleForm();
+    $old = $view['old'];
+    $errors = $view['errors'];
+    $result = $view['result'];
+
+    require __DIR__ . '/../views/form.php';
+}
